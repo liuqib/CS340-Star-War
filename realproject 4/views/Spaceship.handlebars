@@ -1,0 +1,55 @@
+<!-- <!doctype html> -->
+<html>
+<!-- <head>
+<script type="text/javascript">
+function display_alert()
+  {
+  alert("Delete Spaceship")
+  }
+</script>
+</head> -->
+{{#each foo}}
+{{this}}
+{{/each}}
+    <tr>
+      <td>Star War Spaceship</td>
+    </tr>
+
+    <div>
+      <h3>Add a ship</h3>
+        <form id="addship" action="/Spaceship" method="post">
+          Name: <input type="text" name="name"><br>
+          Side: <select name="Side">
+                  <option value="1">Rebal</option>
+                  <option value="2">Empire</option>
+                  <option value="3">Neutral</option>
+                </select><br>
+          Type: <input type="text" name="type"><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div>
+      <table>
+
+          <h3>Current Star War spaceship</h3>
+
+        <tr>
+          <td>Name</td>
+          <td>Side</td>
+          <td>Type</rd>
+        </tr>
+        <tbody>
+          {{#each ships}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{side}}</td>
+          <td>{{type}}</td>
+          <td><button onclick="deleteSpaceship({{spaceship_id}})">Delete</button></td>
+          <td><a href="/spaceship/{{id}}">Update</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      </table>
+    </div>
+</html>

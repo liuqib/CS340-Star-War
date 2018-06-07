@@ -1,0 +1,83 @@
+<!-- <!doctype html> -->
+<html>
+<!-- <head>
+<script type="text/javascript">
+function display_alert()
+  {
+  alert("Update Character")
+  }
+</script>
+</head> -->
+{{#each foo}}
+{{this}}
+{{/each}}
+  <body>
+    <tr>
+      <td>Update Character</td>
+    </tr>
+
+    <div>
+      <h3>Update a character</h3>
+        <!-- <form id="updateperson" action="/people" method="post">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br> -->
+          Character: <select>
+            {{#each character}}
+            <option value = "{{id}}">{{fname}}{{lname}}</option>
+            {{/each}}
+          </select><br>
+          Side: <select>
+                  <option value="1">Rebal</option>
+                  <option value="2">Empire</option>
+                  <option value="3">Neutral</option>
+                </select><br>
+          Planet:<select>
+            {{#each planet}}
+            <option value = '{{id}}'>{{name}}</option>
+                  <!-- <option value="1">Tatooine</option>
+                  <option value="2">Naboo</option>
+                  <option value="3">Ahch-To</option>
+                  <option value="4">Mustafar</option>
+                  <option value="5">Coruscant</option>
+                  <option value="6">Eadu</option>
+                  <option value="7">Kashyyyk</option>
+                  <option value="8">Alderaan</option>
+                  <option value="9">Geonosis</option>
+                  <option value="10">Kamino</option>
+                  <option value="11">Hoth</option>
+                  <option value="12">Bespin</option>
+                  <option value="13">Jakku</option> -->
+                  {{/each}}
+                </select><br>
+          Race: <input type="text" name="race"><br>
+          <!-- <input type="submit" value="update" onclick="display_alert()"> -->
+        </form>
+        <button onclick="updatePerson({{person.id}})">Update</button>
+        <script defer>selectPlanet({{person.homeworld}});</script>
+    </div>
+
+    <!-- <div>
+      <table>
+
+        <h3>Current Star War Character</h3>
+
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Side</td>
+          <td>Race</rd>
+        </tr>
+
+        <tr>
+          <td>Luke</td>
+          <td>Skywalker</td>
+          <td>Rebal</td>
+          <td>Human</td>
+          <td><button onclick="display_alert()">Delete</button></td>
+          <td><a href="/people/{{id}}">Update</a></td>
+        </tr>
+
+      </table>
+    </div> -->
+  </body>
+</html>

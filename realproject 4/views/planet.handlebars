@@ -1,0 +1,59 @@
+<!-- <!doctype html> -->
+<html>
+<!-- <head>
+<script type="text/javascript">
+function display_alert()
+  {
+  alert("Delete planet")
+  }
+</script>
+</head> -->
+{{#each foo}}
+{{this}}
+{{/each}}
+    <tr>
+      <td>Star War Planet</td>
+    </tr>
+
+    <div>
+      <h3>Add a planet</h3>
+        <form id="addplane" action="/planet" method="post">
+          Name: <input type="text" name="name"><br>
+          Side: <select name="Side">
+                  <option value="1">Rebal</option>
+                  <option value="2">Empire</option>
+                  <option value="3">Neutral</option>
+                </select><br>
+          Condition: <select name="condition">
+                      <option value="1">Well Developed</option>
+                      <option value="2">Underdeveloped</option>
+                      <option value="3">Uninhabited</option>
+                    </select><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div>
+      <table>
+
+        <h3>Current Star War planet</h3>
+
+        <tr>
+          <td>Name</td>
+          <td>Side</td>
+          <td>Condition</rd>
+        </tr>
+        <tbody>
+          {{#each planets}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{side}}</td>
+          <td>{{p_condition}}</td>
+          <td><button onclick="deletePlanet({{planet_id}})">Delete</button></td>
+          <td><a href="/planet/{{id}}">Update</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      </table>
+    </div>
+</html>

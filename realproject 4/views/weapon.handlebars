@@ -1,0 +1,55 @@
+<!-- <!doctype html> -->
+<html>
+<!-- <head>
+<script type="text/javascript">
+function display_alert()
+  {
+  alert("Delete weapon")
+  }
+</script>
+</head> -->
+{{#each foo}}
+{{this}}
+{{/each}}
+    <tr>
+      <td>Star War Weapon</td>
+    </tr>
+
+    <div>
+      <h3>Add a weapon</h3>
+        <form id="addweapon" action="/weapon" method="post">
+          Name: <input type="text" name="name"><br>
+          Side: <select name="Side">
+                  <option value="1">Rebal</option>
+                  <option value="2">Empire</option>
+                  <option value="3">Neutral</option>
+                </select><br>
+          Color: <input type="text" name="color"><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div>
+      <table>
+
+        <h3>Current Star War weapon</h3>
+
+        <tr>
+          <td>Name</td>
+          <td>Side</td>
+          <td>Color</rd>
+        </tr>
+        <tbody>
+          {{#each weapons}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{side}}</td>
+          <td>{{color}}</td>
+          <td><button onclick="deleteWeapon({{weapon_id}})">Delete</button></td>
+          <td><a href="/weapon/{{id}}">Update</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      </table>
+    </div>
+</html>

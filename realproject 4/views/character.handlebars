@@ -1,0 +1,63 @@
+<!-- <!doctype html> -->
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+    <tr>
+      <td>Star War Character</td>
+    </tr>
+
+    <div>
+      <h3>Add a character</h3>
+        <form id="addperson" action="/character" method="post">
+          First name: <input type="text" name="fname"><br>
+          Last name: <input type="text" name="lname"><br>
+          Side: <select name="Side">
+                  <option value="1">Rebal</option>
+                  <option value="2">Empire</option>
+                  <option value="3">Neutral</option>
+                </select><br>
+          Planet:<select name= "planet_id">
+            {{#each planets}}
+            <option value="{{planet_id}}">{{name}}</option>
+            {{/each}}
+                </select><br>
+          Race: <input type="text" name="race"><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div>
+      <table>
+
+        <h3>Current Star War Character</h3>
+
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Side</td>
+          <td>Planet</td>
+          <td>Race</rd>
+        </tr>
+      <tbody>
+        {{#each character}}
+        <tr>
+          <td>{{fname}}</td>
+          <td>{{lname}}</td>
+          <td>{{side}}</td>
+          <td>{{homeworld}}</td>
+          <td>{{race}}</td>
+          <!-- <td>{{character_id}}</td> -->
+          <td><button onclick="deleteCharacter({{character_id}})">Delete</button></td>
+          <td><a href="/updatespecificperson{{character_id}}">Update</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      </table>
+    </div>
+
+    <h2>
+
+    </h2>
+
+</html>
