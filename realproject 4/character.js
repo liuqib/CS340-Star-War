@@ -27,7 +27,7 @@ module.exports = function(){
     }
 
     function getPerson(res, mysql, context, id, complete){
-        var sql = "SELECT character_id, fname, lname, side, homeworld, race FROM db_character WHERE character_id = [character_ID_selected_from_browse_character_page]";
+        var sql = "SELECT character_id, fname, lname, side, homeworld, race FROM db_character WHERE character_id = ?";
         var inserts = [id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -35,6 +35,7 @@ module.exports = function(){
                 res.end();
             }
             context.person = results[0];
+            console.log(context.person);
             complete();
         });
     }
@@ -67,10 +68,11 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         getPerson(res, mysql, context, req.params.id, complete);
         getPlanets(res, mysql, context, complete);
+        console.log("hiii");
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
-                res.render('update-person', context);
+                res.render('updatespecificperson', context);
             }
 
         }
