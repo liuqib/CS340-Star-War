@@ -45,7 +45,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js"];
+        context.jsscripts = ["filterperson.js"];
         var mysql = req.app.get('mysql');
         // console.log(mysql);
         getPeople(res, mysql, context, complete);
@@ -60,22 +60,21 @@ module.exports = function(){
     });
 
     router.post('/', function(req, res){
-        // console.log(req.body.planet_id)
-        // console.log(req.body)
+        var context = {};
         var mysql = req.app.get('mysql');
-        // var sql = "INSERT INTO db_character (fname, lname, side, homeworld, race) VALUES ([fnameInput], [lnameInput], [sideInput], [homeworld_id_from_dropdown_Input], [raceInput])";
-        var sql = "SELECT fname, lname FROM db_character WHERE side = ?";
+        var sql = "SELECT fname, lname, db_character.side, db_planet.name AS homeworld, race FROM db_character INNER JOIN db_planet ON homeworld = db_planet.planet_id WHERE db_character.side = ?";
         var inserts = [req.body.Choose_Side];
-        console.log(req.body.Choose_Side);
-        // console.log("dont call me");
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+        // console.log(req.body.Choose_Side);
+        mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
-                console.log(JSON.stringify(error))
+              // console.log("dont call me");
                 res.write(JSON.stringify(error));
                 res.end();
-            }else{
-                res.redirect('/character');
             }
+            context.character = results;
+            res.render('filter', context);
+            // console.log(context.person);
+            // complete();
         });
     });
 

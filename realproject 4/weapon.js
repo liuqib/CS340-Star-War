@@ -92,7 +92,7 @@ module.exports = function(){
     /* Route to delete a person, simply returns a 202 upon success. Ajax will handle this. */
 
     router.delete('/:id', function(req, res){
-      console.log("imhere");
+      // console.log("imhere");
         var mysql = req.app.get('mysql');
         // var sql = "DELETE FROM planet WHERE id = [planet_ID_selected_from_browse_planet_page]";
         var sql = "DELETE FROM db_weapon WHERE weapon_id = ?";
