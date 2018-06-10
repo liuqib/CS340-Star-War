@@ -11,7 +11,7 @@ function deleteCharacter(id){
 
 function deleteCharacter_weapon(wid, cid){
   $.ajax({
-      url: '/m2m/cid/' + cid + '/weapon/' + wid,
+      url: '/weapon_character/wid/' + wid + '/cid/' + cid,
       type: 'DELETE',
       success: function(result){
           if(result.responseText != undefined){

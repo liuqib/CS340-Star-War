@@ -1,0 +1,17 @@
+<html>
+<div>
+<h1>Update {{person.fname}} {{person.lname}}'s Planet</h1>
+<form id="updateone2m" action="/one2m" method="put">
+    ID: {{person.character_id}}<br>
+    First name: {{person.fname}}<br>
+    Last name: {{person.lname}}<br>
+    Planets: <select name="planet_id" id="planet-selector">
+      {{#each planets}}
+      <option value="{{planet_id}}">{{name}}</option>
+      {{/each}}
+    </select><br>
+    <button onclick="updateCharacter_planet({{person.character_id}})">Update</button>
+</form>
+<!-- <script defer>selectPlanet({{character.homeworld}});</script> -->
+</div>
+</html>

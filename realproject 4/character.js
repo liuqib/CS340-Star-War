@@ -35,7 +35,7 @@ module.exports = function(){
                 res.end();
             }
             context.person = results[0];
-            console.log(context.person);
+            // console.log(context.person);
             complete();
         });
     }
@@ -68,26 +68,25 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         getPerson(res, mysql, context, req.params.id, complete);
         getPlanets(res, mysql, context, complete);
-        console.log("hiii");
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
+              // console.log(context);
                 res.render('updatespecificperson', context);
             }
-
         }
     });
 
     /* Adds a person, redirects to the character page after adding */
 
     router.post('/', function(req, res){
-        console.log(req.body.planet_id)
+        // console.log(req.body.planet_id)
         // console.log(req.body)
         var mysql = req.app.get('mysql');
         // var sql = "INSERT INTO db_character (fname, lname, side, homeworld, race) VALUES ([fnameInput], [lnameInput], [sideInput], [homeworld_id_from_dropdown_Input], [raceInput])";
         var sql = "INSERT INTO db_character (fname, lname, side, homeworld, race) VALUES (?,?,?,?,?)";
         var inserts = [req.body.fname, req.body.lname, req.body.Side, req.body.planet_id, req.body.race];
-        // console.log(req.body.homeworld)
+        // console.log("dont call me");
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -103,14 +102,18 @@ module.exports = function(){
 
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        // var sql = "UPDATE db_character SET fname=[fnameInput], lname=[lnameInput], side=[sideInput], homeworld=[homeworld_id_from_dropdown_Input], race=[raceInput] WHERE id=[character_ID_from_the_update_form]";
-        var sql = "UPDATE db_character SET fname=?, lname=?, side=?, homeworld=?, race=? WHERE id=?";
-        var inserts = [req.body.fname, req.body.lname, req.body.Side, req.body.planet, req.body.race, req.params.id];
+        var sql = "UPDATE db_character SET fname=?, lname=?, side=?, homeworld=?, race=? WHERE character_id=?";
+        var inserts = [req.body.fname, req.body.lname, req.body.Side, req.body.planet_id, req.body.race, req.params.id];
+        // console.log(req.body.fname);
+        // console.log(req.params.id);
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
+              // console.log("shouldnt be me");
+              console.log(error);
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
+              // console.log("should be me");
                 res.status(200);
                 res.end();
             }
@@ -120,7 +123,7 @@ module.exports = function(){
     /* Route to delete a person, simply returns a 202 upon success. Ajax will handle this. */
 
     router.delete('/:id', function(req, res){
-      console.log("imhere");
+      // console.log("imhere");
         var mysql = req.app.get('mysql');
         // var sql = "DELETE FROM character WHERE id = [character_ID_selected_from_browse_character_page]";
         var sql = "DELETE FROM db_character WHERE character_id = ?";
@@ -133,8 +136,29 @@ module.exports = function(){
             }else{
                 res.status(202).end();
             }
-        })
-    })
+        });
+    });
+
+    // router.change('/', function(req, res){
+    //     // console.log(req.body.planet_id)
+    //     // console.log(req.body)
+    //     var mysql = req.app.get('mysql');
+    //     // var sql = "INSERT INTO db_character (fname, lname, side, homeworld, race) VALUES ([fnameInput], [lnameInput], [sideInput], [homeworld_id_from_dropdown_Input], [raceInput])";
+    //     var sql = "SELECT fname, lname FROM db_character WHERE side = ?";
+    //     var inserts = [req.body.Choose_Side];
+    //     console.log(req.body.Choose_Side);
+    //     // console.log("dont call me");
+    //     sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+    //         if(error){
+    //             console.log(JSON.stringify(error))
+    //             res.write(JSON.stringify(error));
+    //             res.end();
+    //         }else{
+    //             res.redirect('/character');
+    //         }
+    //     });
+    // });
+
 
     return router;
 }();

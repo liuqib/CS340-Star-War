@@ -1,0 +1,50 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+    <tr>
+      <td>Star War Character</td>
+    </tr>
+
+<div>
+<form id="change_look" action="/filter" method="post">
+Filter by:<select name="Choose_Side">
+            <option value="Rebal">Rebal</option>
+            <option value="Empire">Empire</option>
+            <option value="Neutral">Neutral</option>
+        </select>
+<input type="submit" value="Apply">
+</form>
+</div>
+
+<div>
+  <table>
+
+    <h3>Filter Star War Character</h3>
+
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Side</td>
+      <td>Planet</td>
+      <td>Race</rd>
+    </tr>
+  <tbody>
+    {{#each character}}
+    <tr>
+      <td>{{fname}}</td>
+      <td>{{lname}}</td>
+      <td>{{side}}</td>
+      <td>{{homeworld}}</td>
+      <td>{{race}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+</div>
+
+<h2>
+  <a href='/'>Back to main page</a>
+</h2>
+
+</html>

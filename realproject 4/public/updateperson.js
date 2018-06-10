@@ -1,6 +1,5 @@
 function updatePerson(id){
     $.ajax({
-        // console.log('id');
         url: '/character/' + id,
         type: 'PUT',
         data: $('#updatespecificperson').serialize(),

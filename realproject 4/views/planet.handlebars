@@ -20,14 +20,14 @@ function display_alert()
         <form id="addplane" action="/planet" method="post">
           Name: <input type="text" name="name"><br>
           Side: <select name="Side">
-                  <option value="1">Rebal</option>
-                  <option value="2">Empire</option>
-                  <option value="3">Neutral</option>
+                  <option value="Rebal">Rebal</option>
+                  <option value="Empire">Empire</option>
+                  <option value="Neutral">Neutral</option>
                 </select><br>
           Condition: <select name="condition">
-                      <option value="1">Well Developed</option>
-                      <option value="2">Underdeveloped</option>
-                      <option value="3">Uninhabited</option>
+                      <option value="well developed">Well Developed</option>
+                      <option value="Underdeveloped">Underdeveloped</option>
+                      <option value="Uninhabited">Uninhabited</option>
                     </select><br>
           <input type="submit" value="Submit">
         </form>
@@ -56,4 +56,8 @@ function display_alert()
       </tbody>
       </table>
     </div>
+
+    <h2>
+      <a href='/'>Back to main page</a>
+    </h2>
 </html>

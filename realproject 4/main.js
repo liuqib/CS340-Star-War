@@ -17,6 +17,7 @@ app.use('/Spaceship', require('./Spaceship.js'));
 app.use('/weapon', require('./weapon.js'));
 app.use('/planet', require('./planet.js'));
 app.use('/one2m', require('./one2m.js'));
+app.use('/filter', require('./filter.js'));
 app.use('/', express.static('public'));
 
 app.use(function(req,res){

@@ -6,36 +6,20 @@
 <head>
 	<title>M2M Page</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- <script src="/static/deleteperson.js"></script> -->
 </head>
-<body>
-	<html>
+
   <tr>
-    <td>Change Character's weapon</td>
+    <td>Change Character's weapon(Many to Many Relationship)</td>
   </tr>
 <div>
 <h3> Associate weapon with a character </h3>
-    <form id="add_weapon_character" action="/character_weapon" method="post">
-    Character: <select name='cid'>
+    <form id="add_weapon_character" action="/weapon_character" method="post">
+    Character: <select name="cid">
 			{{#each character}}
 				<option value = '{{cid}}'>{{fname}} {{lname}}</option>
 			{{/each}}
-          <!-- <option value='1'>Luke Skywalker</option>
-          <option value='3'>Han Solo</option>
-          <option value='4'>Obi-Wan Kenobi</option>
-          <option value='5'>Anakin Skywalker</option>
-          <option value='8'>Yoda</option> -->
-    </select>
-    <br>
-    Weapon:<sup>Multi-select</sup> <select multiple name="weapons">
-        <!-- <option value="1">Lightsaber-Luke</option>
-        <option value="2">Lightsaber-Anakin</option>
-        <option value="3">Lightsaber-Yoda</option>
-        <option value="4">DH-17</option>
-        <option value="5">DLT-19</option>
-        <option value="6">E-11</option>
-        <option value="7">T-21</option>
-        <option value="8">DL-44</option> -->
+    </select><br>
+    Weapon:<sup>Multi-select</sup> <select multiple name="wid">
 				{{#each weapon}}
 				<option value = "{{wid}}">{{name}}</option>
 				{{/each}}
@@ -43,7 +27,8 @@
     <input type="submit" value="Submit">
     </form>
 </div>
-<br/>
+
+
 <h3> List of character with their weapon </h3>
 <table>
     <thead>
@@ -53,17 +38,21 @@
     <tbody>
 			{{#each weapon_character}}
 			<tr>
-					<td>{{cid}}</td>
-					<td>{{wid}}</td>
-					<td><button onclick = "delete({{cid}},{{wid}})">Delete</button></td>
-					<td><a href='/weapon_character/{{cid}},{{wid}}'>Update</a></td>
+					<td>{{c_name}}</td>
+					<td>{{name}}</td>
+					<!-- <td>{{cid}}</td>
+					<td>{{wid}}</td> -->
+					<td><button onclick = "deleteCharacter_weapon({{wid}},{{cid}})">Delete</button></td>
+					<!-- <td><a href='/weapon_character/{{cid}},{{wid}}'>Update</a></td> -->
 			</tr>
 			{{else}}
         <b> No character with any weapon found! Grant some using the form. </b>
 				{{/each}}
     </tbody>
 </table>
-</html>
 
-</body>
+<h2>
+	<a href='/'>Back to main page</a>
+</h2>
+
 </html>
