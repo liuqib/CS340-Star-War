@@ -64,17 +64,13 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "SELECT fname, lname, db_character.side, db_planet.name AS homeworld, race FROM db_character INNER JOIN db_planet ON homeworld = db_planet.planet_id WHERE db_character.side = ?";
         var inserts = [req.body.Choose_Side];
-        // console.log(req.body.Choose_Side);
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
-              // console.log("dont call me");
                 res.write(JSON.stringify(error));
                 res.end();
             }
             context.character = results;
             res.render('filter', context);
-            // console.log(context.person);
-            // complete();
         });
     });
 

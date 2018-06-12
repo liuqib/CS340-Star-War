@@ -26,8 +26,8 @@ function display_alert()
                 </select><br>
           Condition: <select name="condition">
                       <option value="well developed">Well Developed</option>
-                      <option value="Underdeveloped">Underdeveloped</option>
-                      <option value="Uninhabited">Uninhabited</option>
+                      <option value="underdeveloped">Underdeveloped</option>
+                      <option value="uninhabited">Uninhabited</option>
                     </select><br>
           <input type="submit" value="Submit">
         </form>
@@ -50,7 +50,7 @@ function display_alert()
           <td>{{side}}</td>
           <td>{{p_condition}}</td>
           <td><button onclick="deletePlanet({{planet_id}})">Delete</button></td>
-          <td><a href="/planet/{{id}}">Update</a></td>
+          <!-- <td><a href="/planet/{{id}}">Update</a></td> -->
         </tr>
         {{/each}}
       </tbody>
