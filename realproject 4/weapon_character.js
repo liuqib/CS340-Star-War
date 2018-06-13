@@ -89,21 +89,6 @@ module.exports = function(){
         res.redirect('/weapon_character');
     });
 
-    // router.put('/cid/:cid/wid/:wid',function(req,res){
-    //   var mysql = req.app.get('mysql');
-    //   var sql = "UPDATE de_weapon_character SET cid = ? , wid = ?";
-    //   var insert = [req.body.cid, req.body.wid];
-    //   sql = mysql.pool.query(sql, insert, function(error, results, fields){
-    //     if(error){
-    //         res.write(JSON.stringify(error));
-    //         res.end();
-    //     }else{
-    //         res.status(200);
-    //         res.end();
-    //     }
-    //   });
-    // });
-
     router.delete('/wid/:wid/cid/:cid', function(req, res){
         //console.log(req) //I used this to figure out where did pid and cid go in the request
         // console.log(req.params.cid)

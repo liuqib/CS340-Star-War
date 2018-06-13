@@ -33,23 +33,6 @@ module.exports = function(){
         }
     });
 
-    /* Display one person for the specific purpose of updating planet */
-
-    // router.get('/:id', function(req, res){
-    //     callbackCount = 0;
-    //     var context = {};
-    //     context.jsscripts = ["selectedplanet.js", "updateplanet.js"];
-    //     var mysql = req.app.get('mysql');
-    //     // getPerson(res, mysql, context, req.params.id, complete);
-    //     getPlanets(res, mysql, context, complete);
-    //     function complete(){
-    //         callbackCount++;
-    //         if(callbackCount >= 1){
-    //             res.render('update-planet', context);   //doesn't have update-planet
-    //         }
-    //     }
-    // });
-
     /* Adds a person, redirects to the planet page after adding */
 
     router.post('/', function(req, res){
@@ -71,23 +54,6 @@ module.exports = function(){
         });
     });
 
-    /* The URI that update data is sent to in order to update a person */
-
-    // router.put('/:id', function(req, res){
-    //     var mysql = req.app.get('mysql');
-    //     // var sql = "UPDATE db_weapon SET fname=[fnameInput], lname=[lnameInput], side=[sideInput], homeworld=[homeworld_id_from_dropdown_Input], race=[raceInput] WHERE id=[planet_ID_from_the_update_form]";
-    //     var sql = "UPDATE db_weapon SET name=?, side=?, color=? WHERE id=?";
-    //     var inserts = [req.body.name, req.body.Side, req.body.color, req.params.id];
-    //     sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-    //         if(error){
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }else{
-    //             res.status(200);
-    //             res.end();
-    //         }
-    //     });
-    // });
 
     /* Route to delete a person, simply returns a 202 upon success. Ajax will handle this. */
 

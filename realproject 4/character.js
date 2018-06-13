@@ -139,26 +139,5 @@ module.exports = function(){
         });
     });
 
-    // router.change('/', function(req, res){
-    //     // console.log(req.body.planet_id)
-    //     // console.log(req.body)
-    //     var mysql = req.app.get('mysql');
-    //     // var sql = "INSERT INTO db_character (fname, lname, side, homeworld, race) VALUES ([fnameInput], [lnameInput], [sideInput], [homeworld_id_from_dropdown_Input], [raceInput])";
-    //     var sql = "SELECT fname, lname FROM db_character WHERE side = ?";
-    //     var inserts = [req.body.Choose_Side];
-    //     console.log(req.body.Choose_Side);
-    //     // console.log("dont call me");
-    //     sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-    //         if(error){
-    //             console.log(JSON.stringify(error))
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }else{
-    //             res.redirect('/character');
-    //         }
-    //     });
-    // });
-
-
     return router;
 }();
